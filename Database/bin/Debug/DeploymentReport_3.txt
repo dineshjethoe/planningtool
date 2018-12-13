@@ -1,0 +1,51 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [Employee].[AssignedTasks]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [Employee].[AssignedTasks].[EndDate] on table [Employee].[AssignedTasks] must be added, but the column has no
+         default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this
+         issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of
+         smart-defaults as a deployment option.
+       The column [Employee].[AssignedTasks].[EndTime] on table [Employee].[AssignedTasks] must be added, but the column has no
+         default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this
+         issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of
+         smart-defaults as a deployment option.
+       The column [Employee].[AssignedTasks].[StartDate] on table [Employee].[AssignedTasks] must be added, but the column has
+         no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid
+         this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation
+         of smart-defaults as a deployment option.
+       The column [Employee].[AssignedTasks].[StartTime] on table [Employee].[AssignedTasks] must be added, but the column has
+         no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid
+         this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation
+         of smart-defaults as a deployment option.
+
+** User actions
+     Drop
+       [Employee].[FK_AssignedTasks_Tasks] (Foreign Key)
+       [Employee].[FK_AssignedTasks_Employees] (Foreign Key)
+     Table rebuild
+       [Employee].[AssignedTasks] (Table)
+     Create
+       [Employee].[Employees] (Table)
+       [Task].[Tasks] (Table)
+       [Employee].[DF_Employee_DateTimeCreated] (Default Constraint)
+       [Employee].[DF_Employee_IsDeleted] (Default Constraint)
+       [Task].[DF_Task_DateTimeCreated] (Default Constraint)
+       [Task].[DF_Task_IsDeleted] (Default Constraint)
+       [Employee].[FK_AssignedTasks_Tasks] (Foreign Key)
+       [Employee].[FK_AssignedTasks_Employees] (Foreign Key)
+
+** Supporting actions
+     Drop
+       [Employee].[DF_AssignedTasks_IsDeleted] (Default Constraint)
+       [Employee].[DF_AssignedTasks_DateTimeCreated] (Default Constraint)
+
+The column [Employee].[AssignedTasks].[EndDate] on table [Employee].[AssignedTasks] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [Employee].[AssignedTasks].[EndTime] on table [Employee].[AssignedTasks] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [Employee].[AssignedTasks].[StartDate] on table [Employee].[AssignedTasks] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The column [Employee].[AssignedTasks].[StartTime] on table [Employee].[AssignedTasks] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+

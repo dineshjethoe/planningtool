@@ -1,0 +1,24 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [Employee].[AssignedTasks].[EndDate] is being dropped, data loss could occur.
+       The column [Employee].[AssignedTasks].[IsAllDay] is being dropped, data loss could occur.
+
+** User actions
+     Rename
+       [Employee].[AssignedTasks].[AssignmentDate] (Column)
+     Drop
+       unnamed constraint on [Employee].[AssignedTasks] (Default Constraint)
+     Alter
+       [Employee].[AssignedTasks] (Table)
+
+** Supporting actions
+
+The column [Employee].[AssignedTasks].[EndDate] is being dropped, data loss could occur.
+The column [Employee].[AssignedTasks].[IsAllDay] is being dropped, data loss could occur.
+

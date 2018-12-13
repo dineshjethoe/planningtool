@@ -1,0 +1,24 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [Employee].[Details]
+       [Task].[Details]
+     Clustered indexes that will be dropped
+       [Employee].[PK_AssignedTasks] on [Employee].[AssignedTasks]
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       [Employee].[DF_Details_DateTimeCreated] (Default Constraint)
+       [Task].[DF_Details_DateTimeCreated] (Default Constraint)
+       [Employee].[PK_AssignedTasks] (Primary Key)
+     Table rebuild
+       [Employee].[Details] (Table)
+       [Task].[Details] (Table)
+     Create
+       [Employee].[FK_AssignedTasks_Employees] (Foreign Key)
+       [Employee].[FK_AssignedTasks_Tasks] (Foreign Key)
+
+** Supporting actions

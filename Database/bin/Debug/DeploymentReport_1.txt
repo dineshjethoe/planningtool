@@ -1,0 +1,27 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [Employee] (Schema)
+       [Task] (Schema)
+       [Employee].[Details] (Table)
+       [Employee].[AssignedTasks] (Table)
+       [Task].[Details] (Table)
+       [Employee].[DF_Employee_DateTimeCreated] (Default Constraint)
+       [Employee].[DF_Employee_IsDeleted] (Default Constraint)
+       [Employee].[DF_AssignedTasks_IsDeleted] (Default Constraint)
+       [Employee].[DF_AssignedTasks_DateTimeCreated] (Default Constraint)
+       [Task].[DF_Task_DateTimeCreated] (Default Constraint)
+       [Task].[DF_Task_IsDeleted] (Default Constraint)
+       [Employee].[FK_AssignedTasks_Tasks] (Foreign Key)
+       [Employee].[FK_AssignedTasks_Employees] (Foreign Key)
+
+** Supporting actions
