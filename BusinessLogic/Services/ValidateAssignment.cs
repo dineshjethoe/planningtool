@@ -1,9 +1,9 @@
-﻿using BusinessLogic.Interfaces;
-using Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using BusinessLogic.Interfaces;
+using Entities;
 
 namespace BusinessLogic.Services
 {
@@ -15,7 +15,14 @@ namespace BusinessLogic.Services
     {
         public bool AssigneeHasAlreadyAssignmentsOnDate(AssignedTask newAssignment, List<AssignedTask> assignedTasks)
         {
-            return assignedTasks.Exists(a => a.EmployeeId == newAssignment.EmployeeId && a.AssignmentDate.Date == newAssignment.AssignmentDate.Date);
+            var assignments = assignedTasks.ToList();
+
+            var employeeAssignments = from item in assignments
+                                      where item.AssignmentDate.Date >= newAssignment.AssignmentDate.Date
+                                            && item.EmployeeId == newAssignment.EmployeeId
+                                      select item;
+
+            return employeeAssignments.Any();
         }
 
         public bool AssignmentExceedsMaxDaysPerWeek(int assignedDaysPerWeek, int maxDaysPerWeek)
@@ -56,9 +63,24 @@ namespace BusinessLogic.Services
 
         public double GetTotalAssignedHoursOfEmployeeOnDate(AssignedTask newAssignment, List<AssignedTask> assignedTasks)
         {
-            double totalAssignedHours = assignedTasks
-                .Where(a => a.EmployeeId == newAssignment.EmployeeId && a.AssignmentDate.Date == newAssignment.AssignmentDate.Date)
-                .Sum(a => (new TimeSpan(a.EndTime.Ticks - a.StartTime.Ticks)).TotalHours);
+            var assignments = assignedTasks.ToList();
+
+            var employeeAssignments = from item in assignments
+                                      where item.AssignmentDate.Date >= newAssignment.AssignmentDate.Date
+                                            && item.EmployeeId == newAssignment.EmployeeId
+                                      select item;
+
+            //this can cause error because of date conversion
+            //double totalAssignedHours = assignedTasks
+            //    .Where(a => a.EmployeeId == newAssignment.EmployeeId 
+            //        && Convert.ToDateTime(a.AssignmentDate.Date) == Convert.ToDateTime(newAssignment.AssignmentDate.Date))
+            //    .Sum(a => (new TimeSpan(a.EndTime.Ticks - a.StartTime.Ticks)).TotalHours);
+
+
+            //WorkAround:
+            double totalAssignedHours = employeeAssignments
+                                        .Sum(a => (new TimeSpan(a.EndTime.Ticks - a.StartTime.Ticks)).TotalHours);
+
 
             return totalAssignedHours;
         }

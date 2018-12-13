@@ -16,3 +16,9 @@ C:\Users\dj\Desktop\PlanningTool\Database\bin\Debug\Database.pdb
 C:\Users\dj\Desktop\PlanningTool\Database\obj\Debug\Database.sqlprojAssemblyReference.cache
 C:\Users\dj\Desktop\PlanningTool\Database\obj\Debug\Database.dll
 C:\Users\dj\Desktop\PlanningTool\Database\obj\Debug\Database.pdb
+C:\Users\dinesh.jethoe\planningtool\Database\bin\Debug\Database.dacpac
+C:\Users\dinesh.jethoe\planningtool\Database\bin\Debug\Database.dll
+C:\Users\dinesh.jethoe\planningtool\Database\bin\Debug\Database.pdb
+C:\Users\dinesh.jethoe\planningtool\Database\obj\Debug\Database.sqlprojAssemblyReference.cache
+C:\Users\dinesh.jethoe\planningtool\Database\obj\Debug\Database.dll
+C:\Users\dinesh.jethoe\planningtool\Database\obj\Debug\Database.pdb

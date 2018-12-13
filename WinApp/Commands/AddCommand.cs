@@ -1,11 +1,8 @@
-﻿using BusinessLogic.Services;
+﻿using System;
+using System.Windows.Forms;
+using BusinessLogic.Services;
 using Entities;
 using Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using WinApp.Attributes;
 using WinApp.Enums;
 using WinApp.EventMessages;

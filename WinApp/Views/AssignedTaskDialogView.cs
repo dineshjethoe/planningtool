@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Entities;
-using Repositories.Interfaces;
 using WinApp.Interfaces;
 
 namespace WinApp.Views
@@ -61,6 +60,12 @@ namespace WinApp.Views
             if (comboBoxEmployees.SelectedValue == null || !Int32.TryParse(comboBoxEmployees.SelectedValue.ToString(), out employeeId))
             {
                 errorProvider1.SetError(comboBoxEmployees, "Please select an employee.");
+                hasError = true;
+            }
+
+            if(timePickerStartTime.Value.TimeOfDay >= timePickerEndTime.Value.TimeOfDay)
+            {
+                errorProvider1.SetError(timePickerEndTime, "The end time should be greater than the end start time.");
                 hasError = true;
             }
 

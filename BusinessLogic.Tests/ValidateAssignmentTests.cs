@@ -1,10 +1,10 @@
-﻿using BusinessLogic.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using BusinessLogic.Interfaces;
 using BusinessLogic.Services;
 using Entities;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace BusinessLogic.Tests
 {

@@ -1,9 +1,9 @@
-﻿using BusinessLogic.Interfaces;
-using Entities;
-using Repositories.Interfaces;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using BusinessLogic.Interfaces;
+using Entities;
+using Repositories.Interfaces;
 using WinApp.Attributes;
 using WinApp.Commands;
 using WinApp.Enums;
@@ -77,17 +77,26 @@ namespace WinApp
             var maxHoursPerDay = 8;
             var maxDaysPerWeek = 5;
 
-            var assignments = assignedTaskService.Get(a => a.EmployeeId == assignedTask.EmployeeId
-                                    && a.AssignmentDate.Date == assignedTask.AssignmentDate.Date);
+            //Linq to entities does not support Convert.ToDateTime
+            //var assignments = assignedTaskService.Get(a => a.EmployeeId == assignedTask.EmployeeId
+            //                        && Convert.ToDateTime(a.AssignmentDate.Date) == Convert.ToDateTime(assignedTask.AssignmentDate.Date));
+
+            //WorkAround:
+            var data = assignedTaskService.Get(a => a.EmployeeId == assignedTask.EmployeeId).ToList();
+
+            //Then filter
+            var assignments = from item in data
+                              where item.AssignmentDate.Date >= assignedTask.AssignmentDate.Date
+                              select item;
 
             //Check if the employee has assigments already for the selected assigment date
-            bool assigneeHasAlreadyAssignments = validateAssignment.AssigneeHasAlreadyAssignmentsOnDate(assignedTask, assignments);
+            bool assigneeHasAlreadyAssignments = validateAssignment.AssigneeHasAlreadyAssignmentsOnDate(assignedTask, assignments.ToList());
 
             if (assigneeHasAlreadyAssignments)
             {
                 //The employee has assigment(s) already, so check if the selected start time is before the end time of the last assignment 
                 //taking into consideration that a task is assigned in sequential order
-                var IsTheStartTimeValid = validateAssignment.IsTheStartTimeOfTheNewAssignmentGreaterThanTheEndTimeOfTheLastAssignment(assignedTask, assignments);
+                var IsTheStartTimeValid = validateAssignment.IsTheStartTimeOfTheNewAssignmentGreaterThanTheEndTimeOfTheLastAssignment(assignedTask, assignments.ToList());
 
                 if (!IsTheStartTimeValid)
                 {
@@ -104,13 +113,13 @@ namespace WinApp
                 var lastDateOfWeek = validateAssignment.GetEndDateOfWeek(assignedTask);
 
                 var assignmentsOfTheWeek = assignedTaskService.Get(a => a.EmployeeId == assignedTask.EmployeeId
-                                    && a.AssignmentDate.Date >= firstDateOfWeek
-                                    && a.AssignmentDate.Date <= lastDateOfWeek);
+                                    && a.AssignmentDate >= firstDateOfWeek
+                                    && a.AssignmentDate <= lastDateOfWeek);
 
                 //An employee can have more than one assignment per day, 
                 //so we have to count the unique days, not the assigments
                 var assignedDaysPerWeek = (from temp in assignmentsOfTheWeek
-                                           select temp.AssignmentDate.Date).Distinct().Count();
+                                           select temp.AssignmentDate).Distinct().Count();
 
                 var assignmentExceedsMaxDaysPerWeek = validateAssignment.AssignmentExceedsMaxDaysPerWeek(assignedDaysPerWeek, maxDaysPerWeek);
 
@@ -123,7 +132,7 @@ namespace WinApp
 
             //If both the above mentioned cases passes then rest 
             //to check if the duration between the selected start time and end time exceeds the maximum working hours per day or not
-            var totalHoursAssignedAlready = validateAssignment.GetTotalAssignedHoursOfEmployeeOnDate(assignedTask, assignments);
+            var totalHoursAssignedAlready = validateAssignment.GetTotalAssignedHoursOfEmployeeOnDate(assignedTask, assignments.ToList());
             var IsMaxHoursPerDayExceeded = validateAssignment.ExceedsMaxHoursPerDay(assignedTask, totalHoursAssignedAlready, maxHoursPerDay);
 
             if (IsMaxHoursPerDayExceeded)

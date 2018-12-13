@@ -14,14 +14,26 @@ namespace WinApp.Commands
     class LoadAssignedTasksCommand : CommandBase
     {
         private readonly IMainFormView mainFormView;
-        private readonly IService<AssignedTask> service;
+        private readonly IDialogFormView dialogFormView;
+        private readonly IDialogView<AssignedTask> assignedTaskDialogView;
+        private readonly IService<Task> taskService;
+        private readonly IService<Employee> employeeService;
+        private readonly IService<AssignedTask> assignedTaskService;
 
         public LoadAssignedTasksCommand(
             IMainFormView mainFormView,
-            IService<AssignedTask> service)
+            IDialogFormView dialogFormView,
+            IDialogView<AssignedTask> assignedTaskDialogView,
+             IService<Task> taskService,
+            IService<Employee> employeeService,
+            IService<AssignedTask> assignedTaskService)
         {
             this.mainFormView = mainFormView;
-            this.service = service;
+            this.dialogFormView = dialogFormView;
+            this.assignedTaskDialogView = assignedTaskDialogView;
+            this.taskService = taskService;
+            this.employeeService = employeeService;
+            this.assignedTaskService = assignedTaskService;
             Icon = Properties.Resources.icons8_planner_48;
             ToolTip = MenuOption.AssignedTasks.GetAttribute<MenuOptionAttribute>().Name;
             ShortcutKey = Keys.Alt | Keys.A;
@@ -30,8 +42,10 @@ namespace WinApp.Commands
 
         public override void Execute()
         {
+            assignedTaskDialogView.LoadEmployees(employeeService.Get(e => !e.IsDeleted));
+            assignedTaskDialogView.LoadTasks(taskService.Get(t => !t.IsDeleted));
             mainFormView.ShowAssignedTasksDataListView();
-            var assignedTasks = service.Get(a => !a.IsDeleted);
+            var assignedTasks = assignedTaskService.Get(a => !a.IsDeleted);
             mainFormView.AssignedTasksDataListView.SetData(assignedTasks);
             EventAggregator.Instance.Publish(
                 new AssignedTaskMessage(

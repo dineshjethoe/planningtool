@@ -45,9 +45,10 @@ namespace WinApp
             
             var commands = new IMenuCommand[]
             {
-                new LoadTasksCommand(mainForm, container.Resolve<IService<Task>>()),
-                new LoadEmployeesCommand(mainForm, container.Resolve<IService<Employee>>()),
-                new LoadAssignedTasksCommand(mainForm, container.Resolve<IService<AssignedTask>>()),
+                new LoadTasksCommand(mainForm, taskService),
+                new LoadEmployeesCommand(mainForm, employeeService),
+                new LoadAssignedTasksCommand(mainForm, dialogForm, assignedTaskEditView,
+                    taskService, employeeService, assignedTaskService),
                 new AddCommand(dialogForm, taskService, employeeService, assignedTaskService),
                 new EditCommand(dialogForm, taskService, employeeService, assignedTaskService),
                 new RemoveCommand(mainForm, taskService, employeeService, assignedTaskService),

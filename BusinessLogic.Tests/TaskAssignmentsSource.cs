@@ -1,6 +1,6 @@
-﻿using Entities;
-using System;
+﻿using System;
 using System.Collections;
+using Entities;
 
 namespace BusinessLogic.Tests
 {
