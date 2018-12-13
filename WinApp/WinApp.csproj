@@ -189,12 +189,24 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\icons8-list-48.png" />
-    <Content Include="Resources\icons8-pencil-48.png" />
-    <Content Include="Resources\icons8-permanent-job-48.png" />
-    <Content Include="Resources\icons8-planner-48.png" />
-    <Content Include="Resources\icons8-plus-math-48.png" />
-    <Content Include="Resources\icons8-trash-can-48.png" />
+    <Content Include="Resources\icons8-list-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-pencil-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-permanent-job-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-planner-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-plus-math-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icons8-trash-can-48.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
