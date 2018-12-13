@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogic.Tests", "Busi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{5A124B91-FCC9-4962-B9E9-C4A4B8681093}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{BD5E1BC0-80EE-4044-ABAC-504DC8E2EA92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,8 @@ Global
 		{96EE4AA5-F7FB-4BC3-928E-980F0910FD8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96EE4AA5-F7FB-4BC3-928E-980F0910FD8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96EE4AA5-F7FB-4BC3-928E-980F0910FD8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD5E1BC0-80EE-4044-ABAC-504DC8E2EA92}.Debug|Any CPU.ActiveCfg = Debug
+		{BD5E1BC0-80EE-4044-ABAC-504DC8E2EA92}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
