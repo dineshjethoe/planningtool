@@ -64,7 +64,7 @@
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 37);
-            this.buttonCancel.TabIndex = 0;
+            this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -127,7 +127,7 @@
             this.dateTimePickerTaskDate.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerTaskDate.Name = "dateTimePickerTaskDate";
             this.dateTimePickerTaskDate.Size = new System.Drawing.Size(227, 25);
-            this.dateTimePickerTaskDate.TabIndex = 2;
+            this.dateTimePickerTaskDate.TabIndex = 1;
             // 
             // textBoxTaskDescription
             // 
@@ -138,7 +138,7 @@
             this.textBoxTaskDescription.Multiline = true;
             this.textBoxTaskDescription.Name = "textBoxTaskDescription";
             this.textBoxTaskDescription.Size = new System.Drawing.Size(227, 41);
-            this.textBoxTaskDescription.TabIndex = 1;
+            this.textBoxTaskDescription.TabIndex = 0;
             // 
             // label2
             // 

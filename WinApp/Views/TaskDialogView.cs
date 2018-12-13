@@ -21,7 +21,9 @@ namespace WinApp.Views
 
         public void SetData(Task task)
         {
-            Current = task;
+            this.labelTitle.Text = (IsEditing) ? "Edit Task" : "New Task";
+            errorProvider1.Clear();
+            Current = task ?? new Task { TaskDescription = string.Empty, TaskDate = DateTime.Now};
             textBoxTaskDescription.Text = Current.TaskDescription;
             dateTimePickerTaskDate.Value = Current.TaskDate;
         }
@@ -29,7 +31,6 @@ namespace WinApp.Views
         public Task GetData()
         {
             errorProvider1.Clear();
-
             bool hasError = false;
 
             if (String.IsNullOrEmpty(textBoxTaskDescription.Text))

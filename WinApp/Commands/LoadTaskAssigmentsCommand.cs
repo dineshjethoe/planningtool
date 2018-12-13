@@ -44,9 +44,12 @@ namespace WinApp.Commands
         {
             assignedTaskDialogView.LoadEmployees(employeeService.Get(e => !e.IsDeleted));
             assignedTaskDialogView.LoadTasks(taskService.Get(t => !t.IsDeleted));
-            mainFormView.ShowAssignedTasksDataListView();
-            var assignedTasks = assignedTaskService.Get(a => !a.IsDeleted);
+            var assignedTasks = assignedTaskService.Get(a => !a.IsDeleted, null, "Employee, Task");
             mainFormView.AssignedTasksDataListView.SetData(assignedTasks);
+
+            //This line of code let the Add, Edit and Remove button target (point to) task assignment module
+            //So when click on the Add, Edit or Remove button then the operation is performed for task assignment module
+            mainFormView.ShowAssignedTasksDataListView();
             EventAggregator.Instance.Publish(
                 new AssignedTaskMessage(
                     new AssignedTask

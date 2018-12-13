@@ -5,10 +5,12 @@ using System.Windows.Forms;
 using BusinessLogic.Interfaces;
 using BusinessLogic.Services;
 using Entities;
+using WinApp.Attributes;
 using WinApp.Commands;
 using WinApp.Enums;
 using WinApp.EventMessages;
 using WinApp.Interfaces;
+using WinApp.Util;
 
 namespace WinApp
 {
@@ -36,17 +38,17 @@ namespace WinApp
             menuView.SetCommands(commands);
 
             employeesDataListView = mainFormView.EmployeesDataListView;
-            employeesDataListView.SetTitle(nameof(MenuOption.Employees));
+            employeesDataListView.SetTitle(MenuOption.Employees.GetAttribute<MenuOptionAttribute>().Name);
             employeesDataListView.SetTag(MenuOption.Employees);
             employeesDataListView.OnDataGridViewCellClick += OnDataGridViewCellClick;
 
             tasksDataListView = mainFormView.TasksDataListView;
-            tasksDataListView.SetTitle(nameof(MenuOption.Tasks));
+            tasksDataListView.SetTitle(MenuOption.Tasks.GetAttribute<MenuOptionAttribute>().Name);
             tasksDataListView.SetTag(MenuOption.Tasks);
             tasksDataListView.OnDataGridViewCellClick += OnDataGridViewCellClick;
 
             assignedTasksDataListView = mainFormView.AssignedTasksDataListView;
-            assignedTasksDataListView.SetTitle(nameof(MenuOption.AssignedTasks));
+            assignedTasksDataListView.SetTitle(MenuOption.AssignedTasks.GetAttribute<MenuOptionAttribute>().Name);
             assignedTasksDataListView.SetTag(MenuOption.AssignedTasks);
             assignedTasksDataListView.OnDataGridViewCellClick += OnDataGridViewCellClick;
 
@@ -97,9 +99,9 @@ namespace WinApp
             }
         }
 
-        private void PublishMessage(object dataBoundItem)
+        private void PublishMessage(object entityObject)
         {
-            switch (dataBoundItem)
+            switch (entityObject)
             {
                 case Task t when (t != null):
                     EventAggregator.Instance.Publish(new TaskMessage(t));
@@ -114,7 +116,7 @@ namespace WinApp
                     //unknown object
                     break;
                 case null:
-                    throw new ArgumentNullException(nameof(dataBoundItem));
+                    throw new ArgumentNullException(nameof(entityObject));
             }
         }
 

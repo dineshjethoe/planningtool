@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using BusinessLogic.Services;
 using Entities;
+using WinApp.EventMessages;
 using WinApp.Interfaces;
 
 namespace WinApp.Views
@@ -39,7 +41,14 @@ namespace WinApp.Views
 
         public void SetData(AssignedTask assignedTask)
         {
-            Current = assignedTask;
+            this.labelTitle.Text = (IsEditing) ? "Edit Assignment" : "New Assignment";
+            errorProvider1.Clear();
+            Current = assignedTask ?? new AssignedTask
+            {
+                AssignmentDate = DateTime.Now,
+                StartTime = DateTime.Now.TimeOfDay,
+                EndTime = DateTime.Now.TimeOfDay,
+            };
             comboBoxTasks.SelectedValue = assignedTask.TaskId;
             comboBoxEmployees.SelectedValue = assignedTask.EmployeeId;
             dateTimePickerAssignmentDate.Value = assignedTask.AssignmentDate;
@@ -54,7 +63,7 @@ namespace WinApp.Views
             bool hasError = false;
 
             int taskId = 0;
-            if(comboBoxTasks.SelectedValue == null || !Int32.TryParse(comboBoxTasks.SelectedValue.ToString(), out taskId))
+            if (comboBoxTasks.SelectedValue == null || !Int32.TryParse(comboBoxTasks.SelectedValue.ToString(), out taskId))
             {
                 errorProvider1.SetError(comboBoxTasks, "Please select a task.");
                 hasError = true;
@@ -67,7 +76,7 @@ namespace WinApp.Views
                 hasError = true;
             }
 
-            if(timePickerStartTime.Value.TimeOfDay >= timePickerEndTime.Value.TimeOfDay)
+            if (timePickerStartTime.Value.TimeOfDay >= timePickerEndTime.Value.TimeOfDay)
             {
                 errorProvider1.SetError(timePickerEndTime, "The end time should be greater than the end start time.");
                 hasError = true;

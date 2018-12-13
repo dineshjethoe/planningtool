@@ -32,7 +32,8 @@ namespace WinApp.Views
                                 .Select(t => new
                                 {
                                     t.Id,
-                                    t.TaskDescription
+                                    t.TaskDescription,
+                                    TaskDate = t.TaskDate.ToString("dd MMM yyyy")
                                 })
                                 .ToList();
 
@@ -62,7 +63,7 @@ namespace WinApp.Views
                                            a.Task.TaskDescription,
                                            a.Employee.FirstName,
                                            a.Employee.LastName,
-                                           a.AssignmentDate,
+                                           AssignedDate = a.AssignmentDate.ToString("dd MMM yyyy"),
                                            a.StartTime,
                                            a.EndTime
                                        })
@@ -73,6 +74,7 @@ namespace WinApp.Views
             }
 
             dataGridView.DataSource = source;
+            dataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         public void SetTitle(string title)

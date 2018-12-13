@@ -34,6 +34,9 @@ namespace WinApp.Commands
             mainFormView.ShowTasksDataListView();
             var tasks = service.Get(t => !t.IsDeleted);
             mainFormView.TasksDataListView.SetData(tasks);
+
+            //This line of code let the Add, Edit and Remove button target (point to) task module
+            //So when click on the Add, Edit or Remove button then the operation is performed for task module
             EventAggregator.Instance.Publish(new TaskMessage(new Task { TaskDescription = string.Empty, TaskDate = DateTime.Now }));
         }
     }

@@ -1,12 +1,14 @@
-﻿using System.Drawing;
-using System.Linq;
-using System.Windows.Forms;
-using BusinessLogic.Interfaces;
+﻿using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
 using Entities;
 using Repositories.Interfaces;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 using WinApp.Attributes;
 using WinApp.Commands;
 using WinApp.Enums;
+using WinApp.EventMessages;
 using WinApp.Interfaces;
 using WinApp.Util;
 
@@ -22,7 +24,6 @@ namespace WinApp
         private readonly IService<Employee> employeeService;
         private readonly IService<AssignedTask> assignedTaskService;
         private readonly IValidateAssignment validateAssignment;
-
         private readonly IMenuCommand[] commands;
 
         public DialogFormPresenter(
@@ -37,22 +38,22 @@ namespace WinApp
             this.dialogFormView = dialogFormView;
 
             this.taskDialogView = dialogFormView.TaskDialogView;
-            this.taskDialogView.SetTitle("Task");
+            this.taskDialogView.SetTitle(MenuOption.Tasks.GetAttribute<MenuOptionAttribute>().Name);
 
             this.employeeDialogView = dialogFormView.EmployeeDialogView;
-            this.employeeDialogView.SetTitle("Employee");
+            this.employeeDialogView.SetTitle(MenuOption.Employees.GetAttribute<MenuOptionAttribute>().Name);
 
             this.assignedTaskDialogView = dialogFormView.AssignedTaskDialogView;
-            this.assignedTaskDialogView.SetTitle("Assigned Task");
+            this.assignedTaskDialogView.SetTitle(MenuOption.AssignedTasks.GetAttribute<MenuOptionAttribute>().Name);
 
             this.taskDialogView.OnCancelButtonClick += OnCancelButtonClick;
-            this.taskDialogView.OnSaveButtonClick += TaskEditFormView_OnSaveButtonClick;
+            this.taskDialogView.OnSaveButtonClick += TaskDialogView_OnSaveButtonClick;
 
             this.employeeDialogView.OnCancelButtonClick += OnCancelButtonClick; ;
-            this.employeeDialogView.OnSaveButtonClick += EmployeeFormView_OnSaveButtonClick; ;
+            this.employeeDialogView.OnSaveButtonClick += EmployeeDialogView_OnSaveButtonClick; ;
 
             this.assignedTaskDialogView.OnCancelButtonClick += OnCancelButtonClick; ;
-            this.assignedTaskDialogView.OnSaveButtonClick += AssignedTaskFormView_OnSaveButtonClick; ;
+            this.assignedTaskDialogView.OnSaveButtonClick += AssignedTaskDialogView_OnSaveButtonClick; ;
 
             this.taskService = taskService;
             this.employeeService = employeeService;
@@ -144,7 +145,7 @@ namespace WinApp
             return assignmentIsValid;
         }
 
-        private void AssignedTaskFormView_OnSaveButtonClick(object sender, System.EventArgs e)
+        private void AssignedTaskDialogView_OnSaveButtonClick(object sender, System.EventArgs e)
         {
             var assignedTask = assignedTaskDialogView.GetData();
 
@@ -163,10 +164,11 @@ namespace WinApp
                 assignedTaskService.Create(assignedTask);
             }
 
-            ExecuteAndClose(MenuOption.AssignedTasks.GetAttribute<MenuOptionAttribute>().Name, sender as Button);
+            ExecuteAndClose(sender as Button,
+                MenuOption.AssignedTasks.GetAttribute<MenuOptionAttribute>().Name);
         }
 
-        private void EmployeeFormView_OnSaveButtonClick(object sender, System.EventArgs e)
+        private void EmployeeDialogView_OnSaveButtonClick(object sender, System.EventArgs e)
         {
             var employee = employeeDialogView.GetData();
 
@@ -182,10 +184,14 @@ namespace WinApp
                 employeeService.Create(employee);
             }
 
-            ExecuteAndClose(MenuOption.Employees.GetAttribute<MenuOptionAttribute>().Name, sender as Button);
+            this.assignedTaskDialogView.LoadEmployees(employeeService.Get(emp => !emp.IsDeleted));
+
+            ExecuteAndClose(sender as Button,
+                MenuOption.AssignedTasks.GetAttribute<MenuOptionAttribute>().Name,
+                MenuOption.Employees.GetAttribute<MenuOptionAttribute>().Name);
         }
 
-        private void TaskEditFormView_OnSaveButtonClick(object sender, System.EventArgs e)
+        private void TaskDialogView_OnSaveButtonClick(object sender, System.EventArgs e)
         {
             var task = taskDialogView.GetData();
 
@@ -201,7 +207,11 @@ namespace WinApp
                 taskService.Create(task);
             }
 
-            ExecuteAndClose(MenuOption.Tasks.GetAttribute<MenuOptionAttribute>().Name, sender as Button);
+            this.assignedTaskDialogView.LoadTasks(taskService.Get(t => !t.IsDeleted));
+
+            ExecuteAndClose(sender as Button,
+                MenuOption.AssignedTasks.GetAttribute<MenuOptionAttribute>().Name,
+                MenuOption.Tasks.GetAttribute<MenuOptionAttribute>().Name);
         }
 
         private void OnCancelButtonClick(object sender, System.EventArgs e)
@@ -209,23 +219,27 @@ namespace WinApp
             CloseForm(sender as Button);
         }
 
-        private void ExecuteAndClose(string command, Control control)
+        private void ExecuteAndClose(Control control, params string[] commandList)
         {
-            var cmd = commands.FirstOrDefault(c => c.ToolTip == command);
-
-            if (cmd != null)
+            foreach (var cmd in commandList)
             {
-                cmd.Execute();
-            }
+                var command = commands.FirstOrDefault(c => c.ToolTip == cmd);
 
+                if (command != null)
+                {
+                    command.Execute();
+                }
+            }
             CloseForm(control);
         }
 
         private void CloseForm(Control control)
         {
-            if (control.Parent?.Parent?.Parent?.Parent is DialogForm)
+            var parentControl = control.Parent?.Parent?.Parent?.Parent;
+
+            if (parentControl is DialogForm)
             {
-                (control.Parent.Parent.Parent.Parent as DialogForm).Close();
+                (parentControl as DialogForm).Close();
             }
         }
     }

@@ -49,26 +49,26 @@ namespace WinApp.Commands
 
             switch (Tag)
             {
-                case Task t when (t != null):
+                case Task t when (t != null && t.Id > 0):
                     dialogFormView.TaskDialogView.IsEditing = isEditingMode;
                     var task = taskService.GetById(t.Id);
                     dialogFormView.TaskDialogView.SetData(task);
                     dialogFormView.ShowTaskDialogView();
                     break;
-                case Employee e when (e != null):
+                case Employee e when (e != null && e.Id > 0):
                     dialogFormView.EmployeeDialogView.IsEditing = isEditingMode;
                     var employee = employeeService.GetById(e.Id);
                     dialogFormView.EmployeeDialogView.SetData(employee);
                     dialogFormView.ShowEmployeeDialogView();
                     break;
-                case AssignedTask a when (a != null):
+                case AssignedTask a when (a != null && a.Id > 0):
                     dialogFormView.AssignedTaskDialogView.IsEditing = isEditingMode;
                     var assignedTask = assignedTaskService.GetById(a.Id);
                     dialogFormView.AssignedTaskDialogView.SetData(assignedTask);
                     dialogFormView.ShowAssignedTaskDialogView();
                     break;
                 default:
-                    //unknown Tag
+                    MessageBox.Show("Please select a record to edit.");
                     break;
                 case null:
                     throw new ArgumentNullException(nameof(Tag));

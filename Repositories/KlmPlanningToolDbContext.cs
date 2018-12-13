@@ -12,7 +12,7 @@ namespace Repositories
     {
         public KlmPlanningToolDbContext() : base("KlmPlanningToolDbContext")
         {
-            
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<Employee> Employees { get; set; }

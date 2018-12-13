@@ -64,7 +64,7 @@
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 37);
-            this.buttonCancel.TabIndex = 0;
+            this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -149,7 +149,7 @@
             this.textBoxFirstName.Location = new System.Drawing.Point(76, 24);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(234, 25);
-            this.textBoxFirstName.TabIndex = 1;
+            this.textBoxFirstName.TabIndex = 0;
             // 
             // textBoxLastName
             // 

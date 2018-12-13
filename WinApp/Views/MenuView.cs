@@ -62,11 +62,11 @@ namespace WinApp.Views
             toolStrip1.AutoSize = false; toolStrip1.Height = HEIGHT;
             toolStrip1.ImageScalingSize = new Size(WIDTH, HEIGHT);
 
-            for (int i = 0; i < toolStrip1.Items.Count; i++)
+            foreach (var btn in toolStrip1.Items)
             {
-                if(toolStrip1.Items[i] is ToolStripButton)
+                if (btn is ToolStripButton)
                 {
-                    ResizeToolStripButton(toolStrip1.Items[i] as ToolStripButton);
+                    ResizeToolStripButton(btn as ToolStripButton);
                 }
             }
         }

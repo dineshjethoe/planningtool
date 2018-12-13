@@ -58,7 +58,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 182);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(338, 41);
             this.flowLayoutPanel1.TabIndex = 2;
@@ -67,10 +67,10 @@
             // 
             this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.buttonCancel.Location = new System.Drawing.Point(261, 2);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 37);
-            this.buttonCancel.TabIndex = 0;
+            this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -79,7 +79,7 @@
             // 
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.buttonSave.Location = new System.Drawing.Point(182, 2);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 37);
             this.buttonSave.TabIndex = 0;
@@ -107,7 +107,7 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
@@ -165,11 +165,11 @@
             this.timePickerEndTime.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.timePickerEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.timePickerEndTime.Location = new System.Drawing.Point(120, 152);
-            this.timePickerEndTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.timePickerEndTime.Margin = new System.Windows.Forms.Padding(2);
             this.timePickerEndTime.Name = "timePickerEndTime";
             this.timePickerEndTime.ShowUpDown = true;
             this.timePickerEndTime.Size = new System.Drawing.Size(191, 25);
-            this.timePickerEndTime.TabIndex = 2;
+            this.timePickerEndTime.TabIndex = 4;
             // 
             // timePickerStartTime
             // 
@@ -178,11 +178,11 @@
             this.timePickerStartTime.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.timePickerStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.timePickerStartTime.Location = new System.Drawing.Point(120, 122);
-            this.timePickerStartTime.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.timePickerStartTime.Margin = new System.Windows.Forms.Padding(2);
             this.timePickerStartTime.Name = "timePickerStartTime";
             this.timePickerStartTime.ShowUpDown = true;
             this.timePickerStartTime.Size = new System.Drawing.Size(191, 25);
-            this.timePickerStartTime.TabIndex = 2;
+            this.timePickerStartTime.TabIndex = 3;
             // 
             // dateTimePickerAssignmentDate
             // 
@@ -191,7 +191,7 @@
             this.dateTimePickerAssignmentDate.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.dateTimePickerAssignmentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerAssignmentDate.Location = new System.Drawing.Point(120, 92);
-            this.dateTimePickerAssignmentDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerAssignmentDate.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerAssignmentDate.Name = "dateTimePickerAssignmentDate";
             this.dateTimePickerAssignmentDate.Size = new System.Drawing.Size(191, 25);
             this.dateTimePickerAssignmentDate.TabIndex = 2;
@@ -240,7 +240,7 @@
             this.comboBoxTasks.Location = new System.Drawing.Point(121, 33);
             this.comboBoxTasks.Name = "comboBoxTasks";
             this.comboBoxTasks.Size = new System.Drawing.Size(189, 25);
-            this.comboBoxTasks.TabIndex = 3;
+            this.comboBoxTasks.TabIndex = 0;
             // 
             // comboBoxEmployees
             // 
@@ -250,7 +250,7 @@
             this.comboBoxEmployees.Location = new System.Drawing.Point(121, 63);
             this.comboBoxEmployees.Name = "comboBoxEmployees";
             this.comboBoxEmployees.Size = new System.Drawing.Size(189, 25);
-            this.comboBoxEmployees.TabIndex = 3;
+            this.comboBoxEmployees.TabIndex = 1;
             // 
             // errorProvider1
             // 
@@ -262,7 +262,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AssignedTaskDialogView";
             this.Size = new System.Drawing.Size(338, 223);
             this.flowLayoutPanel1.ResumeLayout(false);

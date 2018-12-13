@@ -21,7 +21,9 @@ namespace WinApp.Views
 
         public void SetData(Employee employee)
         {
-            Current = employee;
+            this.labelTitle.Text = (IsEditing) ? "Edit Employeee" : "New Employeee";
+            errorProvider1.Clear();
+            Current = employee ?? new Employee { FirstName = string.Empty, LastName = string.Empty };
             textBoxFirstName.Text = Current.FirstName;
             textBoxLastName.Text = Current.LastName;
         }
@@ -29,7 +31,6 @@ namespace WinApp.Views
         public Employee GetData()
         {
             errorProvider1.Clear();
-
             bool hasError = false;
 
             if(String.IsNullOrEmpty(textBoxFirstName.Text))
