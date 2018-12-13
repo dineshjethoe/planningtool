@@ -48,7 +48,7 @@ namespace WinApp.Commands
             switch (Tag)
             {
                 case Task t when (t != null):
-                    if (ConfirmBox($"Are you sure you want to remove task: {Environment.NewLine} {t.TaskDescription}?"))
+                    if (ConfirmBox($"Are you sure you want to remove task id {t.Id}?"))
                     {
                         taskService.Delete(t.Id);
                         var tasks = taskService.Get(task => !task.IsDeleted);
@@ -57,7 +57,7 @@ namespace WinApp.Commands
                     }
                     break;
                 case Employee e when (e != null):
-                    if (ConfirmBox($"Are you sure you want to remove employee: {e.FirstName} {e.LastName}?"))
+                    if (ConfirmBox($"Are you sure you want to remove employee id {e.Id}?"))
                     {
                         employeeService.Delete(e.Id);
                         var employees = employeeService.Get(emp => !emp.IsDeleted);
@@ -66,7 +66,7 @@ namespace WinApp.Commands
                     }
                     break;
                 case AssignedTask a when (a != null):
-                    if (ConfirmBox($"Are you sure you want to remove the task assignment with Id: {a.Id}?"))
+                    if (ConfirmBox($"Are you sure you want to remove the task assignment with Id {a.Id}?"))
                     {
                         assignedTaskService.Delete(a.Id);
                         var assignedTasks = assignedTaskService.Get(at => !at.IsDeleted);

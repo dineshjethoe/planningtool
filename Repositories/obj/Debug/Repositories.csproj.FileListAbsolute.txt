@@ -54,3 +54,17 @@ C:\Users\dinesh.jethoe\planningtool\Repositories\obj\Debug\Repositories.csproj.C
 C:\Users\dinesh.jethoe\planningtool\Repositories\obj\Debug\Repositories.csproj.CopyComplete
 C:\Users\dinesh.jethoe\planningtool\Repositories\obj\Debug\Repositories.dll
 C:\Users\dinesh.jethoe\planningtool\Repositories\obj\Debug\Repositories.pdb
+C:\Users\dj\Source\Repos\planningtool\Repositories\bin\Debug\Repositories.dll.config
+C:\Users\dj\Source\Repos\planningtool\Repositories\bin\Debug\Repositories.dll
+C:\Users\dj\Source\Repos\planningtool\Repositories\bin\Debug\Repositories.pdb
+C:\Users\dj\Source\Repos\planningtool\Repositories\bin\Debug\Entities.dll
+C:\Users\dj\Source\Repos\planningtool\Repositories\bin\Debug\EntityFramework.dll
+C:\Users\dj\Source\Repos\planningtool\Repositories\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\dj\Source\Repos\planningtool\Repositories\bin\Debug\Entities.pdb
+C:\Users\dj\Source\Repos\planningtool\Repositories\bin\Debug\EntityFramework.xml
+C:\Users\dj\Source\Repos\planningtool\Repositories\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\dj\Source\Repos\planningtool\Repositories\obj\Debug\Repositories.csprojAssemblyReference.cache
+C:\Users\dj\Source\Repos\planningtool\Repositories\obj\Debug\Repositories.csproj.CoreCompileInputs.cache
+C:\Users\dj\Source\Repos\planningtool\Repositories\obj\Debug\Repositories.csproj.CopyComplete
+C:\Users\dj\Source\Repos\planningtool\Repositories\obj\Debug\Repositories.dll
+C:\Users\dj\Source\Repos\planningtool\Repositories\obj\Debug\Repositories.pdb

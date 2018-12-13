@@ -120,3 +120,13 @@ C:\Users\dinesh.jethoe\planningtool\WinApp\obj\Debug\WinApp.csproj.CoreCompileIn
 C:\Users\dinesh.jethoe\planningtool\WinApp\obj\Debug\WinApp.csproj.CopyComplete
 C:\Users\dinesh.jethoe\planningtool\WinApp\obj\Debug\WinApp.exe
 C:\Users\dinesh.jethoe\planningtool\WinApp\obj\Debug\WinApp.pdb
+C:\Users\dj\Source\Repos\planningtool\WinApp\bin\Debug\Resources\icons8-list-48.png
+C:\Users\dj\Source\Repos\planningtool\WinApp\bin\Debug\Resources\icons8-pencil-48.png
+C:\Users\dj\Source\Repos\planningtool\WinApp\bin\Debug\Resources\icons8-permanent-job-48.png
+C:\Users\dj\Source\Repos\planningtool\WinApp\bin\Debug\Resources\icons8-planner-48.png
+C:\Users\dj\Source\Repos\planningtool\WinApp\bin\Debug\Resources\icons8-plus-math-48.png
+C:\Users\dj\Source\Repos\planningtool\WinApp\bin\Debug\Resources\icons8-trash-can-48.png
+C:\Users\dj\Source\Repos\planningtool\WinApp\obj\Debug\WinApp.DialogForm.resources
+C:\Users\dj\Source\Repos\planningtool\WinApp\obj\Debug\WinApp.Views.AssignedTaskDialogView.resources
+C:\Users\dj\Source\Repos\planningtool\WinApp\obj\Debug\WinApp.Views.EmployeeDialogView.resources
+C:\Users\dj\Source\Repos\planningtool\WinApp\obj\Debug\WinApp.Views.TaskDialogView.resources

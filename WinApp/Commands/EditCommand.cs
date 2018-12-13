@@ -51,17 +51,20 @@ namespace WinApp.Commands
             {
                 case Task t when (t != null):
                     dialogFormView.TaskDialogView.IsEditing = isEditingMode;
-                    dialogFormView.TaskDialogView.SetData(t);
+                    var task = taskService.GetById(t.Id);
+                    dialogFormView.TaskDialogView.SetData(task);
                     dialogFormView.ShowTaskDialogView();
                     break;
                 case Employee e when (e != null):
                     dialogFormView.EmployeeDialogView.IsEditing = isEditingMode;
-                    dialogFormView.EmployeeDialogView.SetData(e);
+                    var employee = employeeService.GetById(e.Id);
+                    dialogFormView.EmployeeDialogView.SetData(employee);
                     dialogFormView.ShowEmployeeDialogView();
                     break;
                 case AssignedTask a when (a != null):
                     dialogFormView.AssignedTaskDialogView.IsEditing = isEditingMode;
-                    dialogFormView.AssignedTaskDialogView.SetData(a);
+                    var assignedTask = assignedTaskService.GetById(a.Id);
+                    dialogFormView.AssignedTaskDialogView.SetData(assignedTask);
                     dialogFormView.ShowAssignedTaskDialogView();
                     break;
                 default:

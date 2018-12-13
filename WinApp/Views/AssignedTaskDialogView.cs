@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Entities;
 using WinApp.Interfaces;
@@ -21,8 +22,11 @@ namespace WinApp.Views
 
         public void LoadEmployees(IList<Employee> employees)
         {
-            comboBoxEmployees.DataSource = employees;
-            comboBoxEmployees.DisplayMember = "FirstName";
+            var employeeList = employees
+                                .Select(e => new { e.Id, e.FirstName, e.LastName, FullName = $"{e.FirstName} {e.LastName}" })
+                                .ToList();
+            comboBoxEmployees.DataSource = employeeList;
+            comboBoxEmployees.DisplayMember = "FullName";
             comboBoxEmployees.ValueMember = "Id";
         }
 

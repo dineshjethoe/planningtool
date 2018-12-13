@@ -6,6 +6,7 @@ using BusinessLogic.Interfaces;
 using BusinessLogic.Services;
 using Entities;
 using WinApp.Commands;
+using WinApp.Enums;
 using WinApp.EventMessages;
 using WinApp.Interfaces;
 
@@ -35,13 +36,18 @@ namespace WinApp
             menuView.SetCommands(commands);
 
             employeesDataListView = mainFormView.EmployeesDataListView;
-            employeesDataListView.SetTitle("Employees");
+            employeesDataListView.SetTitle(nameof(MenuOption.Employees));
+            employeesDataListView.SetTag(MenuOption.Employees);
             employeesDataListView.OnDataGridViewCellClick += OnDataGridViewCellClick;
+
             tasksDataListView = mainFormView.TasksDataListView;
-            tasksDataListView.SetTitle("Tasks");
+            tasksDataListView.SetTitle(nameof(MenuOption.Tasks));
+            tasksDataListView.SetTag(MenuOption.Tasks);
             tasksDataListView.OnDataGridViewCellClick += OnDataGridViewCellClick;
+
             assignedTasksDataListView = mainFormView.AssignedTasksDataListView;
-            assignedTasksDataListView.SetTitle("Assigned Tasks");
+            assignedTasksDataListView.SetTitle(nameof(MenuOption.AssignedTasks));
+            assignedTasksDataListView.SetTag(MenuOption.AssignedTasks);
             assignedTasksDataListView.OnDataGridViewCellClick += OnDataGridViewCellClick;
 
             mainFormView.KeyUp += MainFormViewOnKeyUp;
@@ -61,7 +67,33 @@ namespace WinApp
 
             if (e.RowIndex > -1)
             {
-                PublishMessage(dgv.Rows[e.RowIndex].DataBoundItem);
+                MenuOption? menuOption = (dgv.Tag is MenuOption?) ? (dgv.Tag as MenuOption?) : null;
+
+                if (menuOption.HasValue)
+                {
+                    var row = dgv.Rows[e.RowIndex];
+                    var rowValue = row.Cells["Id"].Value;
+                    int id = 0;
+
+                    if (rowValue != null)
+                    {
+                        if (Int32.TryParse(row.Cells["Id"].Value.ToString(), out id))
+                        {
+                            if (menuOption.Value == MenuOption.Tasks)
+                            {
+                                PublishMessage(new Task { Id = id });
+                            }
+                            else if (menuOption.Value == MenuOption.Employees)
+                            {
+                                PublishMessage(new Employee { Id = id });
+                            }
+                            else if (menuOption.Value == MenuOption.AssignedTasks)
+                            {
+                                PublishMessage(new AssignedTask { Id = id });
+                            }
+                        }
+                    }
+                }
             }
         }
 

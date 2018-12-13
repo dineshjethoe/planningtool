@@ -39,15 +39,15 @@ namespace WinApp
             var employeesDataListView = new DataListView();
             var tasksDataListView = new DataListView();
             var assignedTasksDataListView = new DataListView();
-            var taskEditView = new TaskDialogView();
-            var employeeEditView = new EmployeeDialogView();
-            var assignedTaskEditView = new AssignedTaskDialogView();
+            var taskDialogView = new TaskDialogView();
+            var employeeDialogView = new EmployeeDialogView();
+            var assignedTaskDialogView = new AssignedTaskDialogView();
             
             var commands = new IMenuCommand[]
             {
                 new LoadTasksCommand(mainForm, taskService),
                 new LoadEmployeesCommand(mainForm, employeeService),
-                new LoadAssignedTasksCommand(mainForm, dialogForm, assignedTaskEditView,
+                new LoadAssignedTasksCommand(mainForm, dialogForm, assignedTaskDialogView,
                     taskService, employeeService, assignedTaskService),
                 new AddCommand(dialogForm, taskService, employeeService, assignedTaskService),
                 new EditCommand(dialogForm, taskService, employeeService, assignedTaskService),
@@ -62,7 +62,7 @@ namespace WinApp
                 systemInformationService,
                 commands);
             
-            var editFormPresenter = new DialogFormPresenter(
+            var dialogFormPresenter = new DialogFormPresenter(
                 dialogForm,
                 taskService,
                 employeeService,

@@ -49,10 +49,10 @@ namespace WinApp
             this.taskDialogView.OnSaveButtonClick += TaskEditFormView_OnSaveButtonClick;
 
             this.employeeDialogView.OnCancelButtonClick += OnCancelButtonClick; ;
-            this.employeeDialogView.OnSaveButtonClick += EmployeeEditView_OnSaveButtonClick; ;
+            this.employeeDialogView.OnSaveButtonClick += EmployeeFormView_OnSaveButtonClick; ;
 
             this.assignedTaskDialogView.OnCancelButtonClick += OnCancelButtonClick; ;
-            this.assignedTaskDialogView.OnSaveButtonClick += AssignedTaskEditView_OnSaveButtonClick; ;
+            this.assignedTaskDialogView.OnSaveButtonClick += AssignedTaskFormView_OnSaveButtonClick; ;
 
             this.taskService = taskService;
             this.employeeService = employeeService;
@@ -144,7 +144,7 @@ namespace WinApp
             return assignmentIsValid;
         }
 
-        private void AssignedTaskEditView_OnSaveButtonClick(object sender, System.EventArgs e)
+        private void AssignedTaskFormView_OnSaveButtonClick(object sender, System.EventArgs e)
         {
             var assignedTask = assignedTaskDialogView.GetData();
 
@@ -166,7 +166,7 @@ namespace WinApp
             ExecuteAndClose(MenuOption.AssignedTasks.GetAttribute<MenuOptionAttribute>().Name, sender as Button);
         }
 
-        private void EmployeeEditView_OnSaveButtonClick(object sender, System.EventArgs e)
+        private void EmployeeFormView_OnSaveButtonClick(object sender, System.EventArgs e)
         {
             var employee = employeeDialogView.GetData();
 

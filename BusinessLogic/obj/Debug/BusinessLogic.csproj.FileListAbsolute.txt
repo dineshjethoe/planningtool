@@ -50,3 +50,7 @@ C:\Users\dinesh.jethoe\planningtool\BusinessLogic\obj\Debug\BusinessLogic.csproj
 C:\Users\dinesh.jethoe\planningtool\BusinessLogic\obj\Debug\BusinessLogic.csproj.CopyComplete
 C:\Users\dinesh.jethoe\planningtool\BusinessLogic\obj\Debug\BusinessLogic.dll
 C:\Users\dinesh.jethoe\planningtool\BusinessLogic\obj\Debug\BusinessLogic.pdb
+C:\Users\dj\Source\Repos\planningtool\BusinessLogic\bin\Debug\Entities.dll
+C:\Users\dj\Source\Repos\planningtool\BusinessLogic\bin\Debug\System.ValueTuple.dll
+C:\Users\dj\Source\Repos\planningtool\BusinessLogic\bin\Debug\Entities.pdb
+C:\Users\dj\Source\Repos\planningtool\BusinessLogic\bin\Debug\System.ValueTuple.xml
